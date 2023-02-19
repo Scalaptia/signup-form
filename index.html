@@ -26,7 +26,7 @@
                 </h2>
             </div>
             <div class="form-container">
-                <form action="#" method="get" class="sign-up-form">
+                <form onsubmit="return checkPassword(this)" action="#" method="get" class="sign-up-form">
                     <div class="fill-out-section">
                         <h2>Let's do this!</h2>
                         <div class="form-row">
@@ -52,11 +52,12 @@
                         <div class="form-row">
                             <div class="input-container">
                                 <label class="input-label" for="password">PASSWORD</label>
-                                <input class="text-input" type="password" name="password" id="password" required>
+                                <input class="text-input error" type="password" name="password" id="password" required>
+                                <p style="color: #e65757; font-size: small; margin-top: 2px;">* Passwords do not match</p>
                             </div>
                             <div class="input-container">
                                 <label class="input-label" for="confirm-password">CONFIRM PASSWORD</label>
-                                <input class="text-input" type="password" name="confirm-password" id="confirm-password" required>
+                                <input class="text-input error" type="password" name="confirmpassword" id="confirm-password" required>
                             </div>
                         </div>
                     </div>
@@ -68,5 +69,19 @@
             </div>
         </div>
     </div>
+    <script defer>
+        function checkPassword(form) {
+            const password = form.password.value
+            const confirmPassword = form.confirmpassword.value
+
+            if (password != confirmPassword) {
+            alert("Error! Password did not match.")
+            return false
+            } else {
+            alert("Password Match. Congratulations!")
+            return true
+            }
+        }
+    </script>
 </body>
 </html>
